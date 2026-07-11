@@ -2,6 +2,10 @@ import {cart,removeFromCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 import {formatCurrency} from './utils.js';  
 
+ const today = dayjs();
+ const deliveryDate = today.add(7, 'day').format('dddd, MMMM D');
+ 
+
  let cartSummaryHtml = '';
 
   cart.forEach((cartItem) => {
@@ -93,6 +97,9 @@ import {formatCurrency} from './utils.js';
       
   `
 });
+const totalItems = cart.reduce((sum, cartItem) => {
+  return sum + cartItem.quantity;
+}, 0);
   
 document.querySelector('.js-order-summary').innerHTML = cartSummaryHtml;
 
@@ -104,3 +111,7 @@ const container = document.querySelector(`.js-cart-item-container-${productId}`)
       container.remove();
   });
 });
+  document.querySelector('.js-return-to-home-link').textContent = `${totalItems} items`;
+
+
+
