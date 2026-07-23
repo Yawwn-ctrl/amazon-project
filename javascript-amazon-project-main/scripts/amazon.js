@@ -1,7 +1,9 @@
 
 import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
-import {formatCurrency} from './utils.js';
+import {formatCurrency} from './utils/money.js';
+
+function renderProducts() {
 let productHtml = '';
 products.forEach((product) => {
   productHtml +=  `
@@ -71,7 +73,9 @@ document.querySelectorAll('.js-add-to-cart')
     const productId = button.dataset.productId;
     addToCart(productId);
     updateCartQuantity();
-    
+    renderProducts();
     
   });
 });
+}
+renderProducts();
