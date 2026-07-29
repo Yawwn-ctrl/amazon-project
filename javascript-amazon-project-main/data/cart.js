@@ -30,6 +30,7 @@ export function addToCart(productId) {
         deliveryOptionId: '1'
       });
     }
+    JSON.stringify(cart);
     saveToStorage();
 }
 export function removeFromCart(productId) {
@@ -53,5 +54,6 @@ export function updateDeliveryOption(productId,deliveryOptionId) {
   if (matchingItem) {
     matchingItem.deliveryOptionId = deliveryOptionId;
   }
+  JSON.stringify(cart);
   saveToStorage();
 }
