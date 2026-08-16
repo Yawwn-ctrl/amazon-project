@@ -1,5 +1,5 @@
 import {formatCurrency} from '../scripts/utils/money.js';
-
+  console.log('test suite: formatCurrency');
 if (formatCurrency(2029) === '$20.29') {
   console.log('formatCurrency test passed');
 } else {
